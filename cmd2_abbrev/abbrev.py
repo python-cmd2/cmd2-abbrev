@@ -20,7 +20,7 @@ class AbbrevMixin:
     def postparsing_abbrev_hook(self, data: cmd2.plugin.PostparsingData) -> cmd2.plugin.PostparsingData:
         if self.abbrev:
             target = 'do_' + data.statement.command
-            if not target in dir(self):
+            if target not in dir(self):
                 # check if the entered command might be an abbreviation
                 funcs = [func for func in self.keywords if func.startswith(data.statement.command)]
                 if len(funcs) == 1:
