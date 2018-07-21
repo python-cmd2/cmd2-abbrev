@@ -1,14 +1,13 @@
 #
 # coding=utf-8
+"""A cmd2 plugin which adds support for abbreviated commands."""
 
 import cmd2
 
 class AbbrevMixin:
-    """A cmd2 plugin (mixin class) which supports abbreviated commands
-
-    Use
-    """
+    """A cmd2 plugin (mixin class) which adds support for abbreviated commands."""
     def __init__(self, *args, **kwargs):
+        "Initialize this plugin."
         # code placed here runs before cmd2 initializes
         super().__init__(*args, **kwargs)
         # code placed here runs after cmd2 initializes
@@ -18,6 +17,7 @@ class AbbrevMixin:
         self.register_postparsing_hook(self.abbrev_hook)
 
     def abbrev_hook(self, data: cmd2.plugin.PostparsingData) -> cmd2.plugin.PostparsingData:
+        """Postparsing hook which interprets abbreviated command names."""
         if self.abbrev:
             target = 'do_' + data.statement.command
             if target not in dir(self):
