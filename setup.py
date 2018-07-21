@@ -10,24 +10,25 @@ here = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-VERSION='0.1.0'
-
 setuptools.setup(
     name='cmd2-abbrev',
-    version=VERSION,
+    use_scm_version=True,
+
     description='Plugin to add command abbreviation support to cmd2',
     long_description=long_description,
     keywords='cmd2 plugin abbrev',
 
     author='Kotfu',
     author_email='kotfu@kotfu.net',
-    url='https://github.com/python-cmd2/cmd2-plugin-template',
+    url='https://github.com/python-cmd2/cmd2-abbrev',
     license='MIT',
 
     packages=['cmd2_abbrev'],
 
     python_requires='>=3.4',
-    install_requires=['cmd2 >= 0.9.2, <=2'],
+    install_requires=['cmd2 >= 0.9.4, <=2'],
+
+    setup_requires=['setuptools_scm'],
 
     classifiers=[
         'Development Status :: 4 - Beta',
@@ -45,6 +46,6 @@ setuptools.setup(
     # dependencies for development and testing
     # $ pip install -e .[dev]
     extras_require={
-        'dev': ['pytest']
+        'dev': ['setuptools_scm', 'pytest', 'invoke', 'wheel', 'twine']
     },
 )
