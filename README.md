@@ -1,6 +1,7 @@
 # cmd2-abbrev
 
-## Usage
+## Description
+
 Plugin for cmd2 to support previously deprecated abbreviation behavior.
 
 Adds a setting `abbrev` which allows users to control whether commands
@@ -31,6 +32,10 @@ edit   history  py    quit      shell  speak
 ```
 
 ## Installation
+
+System requirements: works anywhere `cmd2` works. Requires `cmd2` version 0.9.4
+or higher.
+
 Install using pip:
 ```
 $ pip install cmd2-abbrev
@@ -46,3 +51,5 @@ class AbbrevExample(cmd2_abbrev.AbbrevMixin, cmd2.Cmd):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 ```
+
+You must mix in `AbbrevMixin` before `cmd2.Cmd` or it won't work properly.
