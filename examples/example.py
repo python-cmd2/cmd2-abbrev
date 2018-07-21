@@ -11,6 +11,8 @@ class AbbrevExample(cmd2_abbrev.AbbrevMixin, cmd2.Cmd):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.maxrepeats = 3
+        # abbrev defaults to False, let's turn it on
+        self.abbrev = True
 
     speak_parser = argparse.ArgumentParser()
     speak_parser.add_argument('-p', '--piglatin', action='store_true', help='atinLay')
