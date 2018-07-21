@@ -15,9 +15,9 @@ class AbbrevMixin:
         # this is where you register any hook functions
         self.abbrev = False
         self.settable.update({'abbrev': 'Accept command abbreviations'})
-        self.register_postparsing_hook(self.postparsing_abbrev_hook)
+        self.register_postparsing_hook(self.abbrev_hook)
 
-    def postparsing_abbrev_hook(self, data: cmd2.plugin.PostparsingData) -> cmd2.plugin.PostparsingData:
+    def abbrev_hook(self, data: cmd2.plugin.PostparsingData) -> cmd2.plugin.PostparsingData:
         if self.abbrev:
             target = 'do_' + data.statement.command
             if target not in dir(self):
