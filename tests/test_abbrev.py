@@ -3,8 +3,6 @@
 
 import argparse
 
-import pytest
-
 import cmd2
 import cmd2_abbrev
 
