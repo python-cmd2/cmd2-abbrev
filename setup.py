@@ -16,6 +16,7 @@ setuptools.setup(
 
     description='Plugin to add command abbreviation support to cmd2',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     keywords='cmd2 plugin abbrev',
 
     author='Kotfu',
