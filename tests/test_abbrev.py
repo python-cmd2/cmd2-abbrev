@@ -6,14 +6,8 @@ import argparse
 import cmd2
 import cmd2_abbrev
 
-######
-#
-# define a class which uses our plugin and some convenience functions
-#
-######
-
 class AbbrevApp(cmd2_abbrev.AbbrevMixin, cmd2.Cmd):
-    """Simple subclass of cmd2.Cmd with our SayMixin plugin included."""
+    """Simple subclass of cmd2.Cmd with the AbbrevMixin plugin included."""
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.maxrepeats = 3
