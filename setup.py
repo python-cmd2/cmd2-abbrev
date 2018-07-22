@@ -31,7 +31,7 @@ setuptools.setup(
     setup_requires=['setuptools_scm'],
 
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Console',
         'Operating System :: OS Independent',
         'Topic :: Software Development :: Libraries :: Python Modules',
