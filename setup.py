@@ -46,6 +46,7 @@ setuptools.setup(
     # dependencies for development and testing
     # $ pip install -e .[dev]
     extras_require={
-        'dev': ['setuptools_scm', 'pytest', 'invoke', 'wheel', 'twine']
+        'dev': ['setuptools_scm', 'pytest', 'codecov', 'pytest-cov',
+                'pylint', 'invoke', 'wheel', 'twine']
     },
 )
