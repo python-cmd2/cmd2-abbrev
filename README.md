@@ -33,8 +33,8 @@ edit   history  py    quit      shell  speak
 
 ## Installation
 
-System requirements: works anywhere `cmd2` works. Requires `cmd2` version 0.9.4
-or higher.
+System requirements: works anywhere `cmd2` works (Windows, Linux, MacOS).
+Requires `cmd2` version 0.9.12 or higher.
 
 Install using pip:
 ```
