@@ -83,13 +83,13 @@ def test_short_command_abbrev_false(capsys):
     app.abbrev = False
     app.onecmd_plus_hooks('sp hello')
     out, err = capsys.readouterr()
-    assert "Unknown syntax" in out
-    assert not err
+    assert "is not a recognized command" in err
+    assert not out
 
 def test_not_unique_abbrev(capsys):
     app = init_app()
     app.abbrev = True
     app.onecmd_plus_hooks('s hello')
     out, err = capsys.readouterr()
-    assert "Unknown syntax" in out
-    assert not err
+    assert "is not a recognized command" in err
+    assert not out
