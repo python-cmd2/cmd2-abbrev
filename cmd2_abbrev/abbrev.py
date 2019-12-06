@@ -22,7 +22,8 @@ class AbbrevMixin:
             target = 'do_' + data.statement.command
             if target not in dir(self):
                 # check if the entered command might be an abbreviation
-                funcs = [func for func in self.keywords if func.startswith(data.statement.command)]
+                cmds = self.get_all_commands()
+                funcs = [func for func in cmds if func.startswith(data.statement.command)]
                 if len(funcs) == 1:
                     raw = data.statement.raw.replace(data.statement.command, funcs[0], 1)
                     data.statement = self.statement_parser.parse(raw)

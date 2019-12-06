@@ -27,7 +27,7 @@ setuptools.setup(
     packages=['cmd2_abbrev'],
 
     python_requires='>=3.4',
-    install_requires=['cmd2 >= 0.9.4, <=2'],
+    install_requires=['cmd2 >= 0.9.12, <=2'],
 
     setup_requires=['setuptools_scm'],
 
