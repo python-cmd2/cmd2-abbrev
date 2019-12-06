@@ -6,8 +6,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+- Add support for Python 3.8
+
 ### Fixed
 - Because of a breaking change in `cmd2`, we now require `cmd2>=0.9.12`
+
+### Removed
+- Drop support for Python 3.4, which was end-of-life on 2019-03-18
 
 
 ## 1.0.1 (2018-07-22)
