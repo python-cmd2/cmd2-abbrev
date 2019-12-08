@@ -1,5 +1,5 @@
 #
-# pylint configuration for tomcatmanager package
+# pylint configuration
 #
 #   $ pylint --rcfile=cmd2_abbrev/pylintrc cmd2_abbrev
 #
