@@ -4,6 +4,7 @@
 
 import cmd2
 
+
 class AbbrevMixin:
     """A cmd2 plugin (mixin class) which adds support for abbreviated commands."""
     def __init__(self, *args, **kwargs):

@@ -6,6 +6,7 @@ import argparse
 import cmd2
 import cmd2_abbrev
 
+
 class AbbrevExample(cmd2_abbrev.AbbrevMixin, cmd2.Cmd):
     """A cmd2 program to demonstrate the use of the cmd2_abbrev plugin"""
     def __init__(self, *args, **kwargs):
@@ -34,6 +35,7 @@ class AbbrevExample(cmd2_abbrev.AbbrevMixin, cmd2.Cmd):
         for i in range(min(repetitions, self.maxrepeats)):
             # .poutput handles newlines, and accommodates output redirection too
             self.poutput(' '.join(words))
+
 
 if __name__ == '__main__':
     app = AbbrevExample()

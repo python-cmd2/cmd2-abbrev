@@ -1,9 +1,17 @@
 #
-# -*- coding: utf-8 -*-
-"""Development related tasks to be run with 'invoke'"""
+# coding=utf-8
+# flake8: noqa E302
+"""Development related tasks to be run with 'invoke'.
 
+Make sure you satisfy the following Python module requirements if you are trying to publish a release to PyPI:
+    - twine >= 1.11.0
+    - wheel >= 0.31.0
+    - setuptools >= 39.1.0
+"""
 import os
+import re
 import shutil
+import sys
 
 import invoke
 
@@ -135,6 +143,34 @@ def clean_all(context):
     pass
 namespace_clean.add_task(clean_all, 'all')
 
+@invoke.task
+def tag(context, name, message=''):
+    "Add a Git tag and push it to origin"
+    # If a tag was provided on the command-line, then add a Git tag and push it to origin
+    if name:
+        context.run('git tag -a {} -m {!r}'.format(name, message))
+        context.run('git push origin {}'.format(name))
+namespace.add_task(tag)
+
+@invoke.task()
+def validatetag(context):
+    "Check to make sure that a tag exists for the current HEAD and it looks like a valid version number"
+    # Validate that a Git tag exists for the current commit HEAD
+    result = context.run("git describe --exact-match --tags $(git log -n1 --pretty='%h')")
+    tag = result.stdout.rstrip()
+
+    # Validate that the Git tag appears to be a valid version number
+    ver_regex = re.compile(r'(\d+)\.(\d+)\.(\d+)')
+    match = ver_regex.fullmatch(tag)
+    if match is None:
+        print('Tag {!r} does not appear to be a valid version number'.format(tag))
+        sys.exit(-1)
+    else:
+        print('Tag {!r} appears to be a valid version number'.format(tag))
+
+
+namespace.add_task(validatetag)
+
 @invoke.task(pre=[clean_all])
 def sdist(context):
     "Create a source distribution"
@@ -158,3 +194,10 @@ def pypi_test(context):
     "Build and upload a distribution to https://test.pypi.org"
     context.run('twine upload --repository-url https://test.pypi.org/legacy/ dist/*')
 namespace.add_task(pypi_test)
+
+# Flake8 - linter and tool for style guide enforcement and linting
+@invoke.task
+def flake8(context):
+    "Run flake8 linter and tool for style guide enforcement"
+    context.run("flake8 --ignore=E252,W503 --max-complexity=26 --max-line-length=127 --show-source --statistics --exclude=.git,__pycache__,.tox,.eggs,*.egg,.venv,.idea,.pytest_cache,.vscode,build,dist,htmlcov")
+namespace.add_task(flake8)

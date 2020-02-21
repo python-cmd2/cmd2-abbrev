@@ -26,8 +26,8 @@ setuptools.setup(
 
     packages=['cmd2_abbrev'],
 
-    python_requires='>=3.4',
-    install_requires=['cmd2 >= 0.9.12, <=2'],
+    python_requires='>=3.5',
+    install_requires=['cmd2 >= 0.10.0, <=2'],
 
     setup_requires=['setuptools_scm'],
 
@@ -42,12 +42,13 @@ setuptools.setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
     ],
 
     # dependencies for development and testing
     # $ pip install -e .[dev]
     extras_require={
         'dev': ['setuptools_scm', 'pytest', 'codecov', 'pytest-cov',
-                'pylint', 'invoke', 'wheel', 'twine']
+                'flake8', 'invoke', 'wheel', 'twine']
     },
 )
