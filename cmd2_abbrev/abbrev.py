@@ -13,7 +13,7 @@ class AbbrevMixin:
         # code placed here runs after cmd2 initializes
         # this is where you register any hook functions
         self.abbrev = False
-        self.settable.update({'abbrev': 'Accept command abbreviations'})
+        self.add_settable(cmd2.Settable('abbrev', bool, 'Accept command abbreviations'))
         self.register_postparsing_hook(self.cmd2_abbrev_hook)
 
     def cmd2_abbrev_hook(self, data: cmd2.plugin.PostparsingData) -> cmd2.plugin.PostparsingData:
